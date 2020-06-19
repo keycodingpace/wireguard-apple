@@ -12,7 +12,6 @@ struct Curve25519 {
         privateKey.withUnsafeMutableUInt8Bytes { bytes in
             curve25519_generate_private_key(bytes)
         }
-        assert(privateKey.count == TunnelConfiguration.keyLength)
         return privateKey
     }
 
@@ -24,7 +23,6 @@ struct Curve25519 {
                 curve25519_derive_public_key(bytes, privateKeyBytes)
             }
         }
-        assert(publicKey.count == TunnelConfiguration.keyLength)
         return publicKey
     }
 }
